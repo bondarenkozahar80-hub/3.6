@@ -1,6 +1,6 @@
 package main
 
-import "github.com/Vladimirmoscow84/Sales_Tracker/internal/app"
+import "github.com/bondarenkozahar80-hub/3.6/internal/app"
 
 func main() {
 	app.Run()
