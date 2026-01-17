@@ -1,0 +1,18 @@
+миграции:
+Миграции на домашнем Маке:
+ *** c УЧЕТОМ ошибок переменной окружения  (PGLOCALEDIR=/Library/PostgreSQL/17/share/locale)***
+
+migrate create -ext sql -dir /Users/mac/Dev/WBTech/sales_tracker/db/dumps -seq tables
+
+ env -u PGLOCALEDIR migrate -database "postgres://localhost:5440/sales_tracker?sslmode=disable&user=vladimir&password=password" -path /Users/mac/Dev/WBTech/sales_tracker/db/dumps up
+
+ env -u PGLOCALEDIR migrate -database "postgres://localhost:5440/sales_tracker?sslmode=disable&user=vladimir&password=password" -path /Users/mac/Dev/WBTech/sales_tracker/db/dumps down
+
+
+__________________ЗАПУСК в ДОКЕРЕ___________
+postgres:
+
+docker run -d --name pg-sales_tracker -p 5440:5432 -e POSTGRES_USER=vladimir -e POSTGRES_PASSWORD=password -e POSTGRES_DB=sales_tracker postgres:latest
+
+Проверка:
+docker logs pg-sales_tracker
